@@ -1,13 +1,13 @@
 <h1 align="center">Welcome to Atlas Mart 👋</h1>
-<a href="https://github.com/1hanzla100/Django-React-Marketplace/blob/master/License.txt"><img alt="GitHub license" src="https://img.shields.io/github/license/1hanzla100/Django-React-Marketplace"></a>
-<a href="https://github.com/1hanzla100/Django-React-Marketplace/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/1hanzla100/Django-React-Marketplace"></a>
-<a href="https://github.com/1hanzla100/Django-React-Marketplace/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/1hanzla100/Django-React-Marketplace"></a> <a href="https://github.com/1hanzla100/Django-React-Marketplace/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/1hanzla100/Django-React-Marketplace"></a>
+<a href="https://github.com/1han zla100/Django-React-Marketplace/blob/master/License.txt"><img alt="GitHub license" src="https://img.shields.io/github/license/1han zla100/Django-React-Marketplace"></a>
+<a href="https://github.com/1han zla100/Django-React-Marketplace/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/1han zla100/Django-React-Marketplace"></a>
+<a href="https://github.com/1hanz la100/Django-React-Marketplace/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/1ha nzla100/Django-React-Marketplace"></a> <a href="https://github.com/1han zla100/Django-React-Marketplace/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/1han zla100/Django-React-Marketplace"></a>
 
 ## Atlas Mart is a OLX like Marketplace built with Python Django and React.js, Material UI
 
-If you want to **contribute** and make this much better for other developer have a look at [Issues](https://github.com/1hanzla100/Django-React-Marketplace/issues).
+If you want to **contribute** and make this much better for other developer have a look at [Issues](https://github.com/1han zla100/Django-React-Marketplace/issues).
 
-If you created something awesome and want to contribute then feel free to open an [pull request](https://github.com/1hanzla100/Django-React-Marketplace/pulls).
+If you created something awesome and want to contribute then feel free to open an [pull request](https://github.com/1han zla100/Django-React-Marketplace/pulls).
 
 
 ## Features
@@ -39,7 +39,7 @@ From your command line, clone and run Django-React-Marketplace:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/1hanzla100/Django-React-Marketplace.git
+$ git clone https://github.com/1han zla100/Django-React-Marketplace.git
 
 # Go into the repository
 $ cd Django-React-Marketplace
@@ -75,11 +75,11 @@ $ python manage.py runserver
 
 ## Author
 
-👤 **Hanzla Tauqeer**
+👤 **Ha nzla Tauqeer**
 
--   Website: https://hanzla.netlify.app
--   Github: [@1hanzla100](https://github.com/1hanzla100)
--   LinkedIn: [@1hanzla100](https://linkedin.com/in/1hanzla100)
+-   Website: https://han zla.netlify.app
+-   Github: [@1han zla100](https://github.com/1han zla100)
+-   LinkedIn: [@1han zla100](https://linkedin.com/in/1han zla100)
 
 ## Show your support
 

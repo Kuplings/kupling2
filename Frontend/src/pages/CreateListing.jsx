@@ -41,8 +41,8 @@ const CreateListing = () => {
 	const formRef = React.useRef(null);
 	const mapContainer = React.useRef(null);
 	const map = React.useRef(null);
-	const [lng, setLng] = React.useState(74.3283);
-	const [lat, setLat] = React.useState(31.5083);
+	const [lng, setLng] = React.useState(37.617698);
+	const [lat, setLat] = React.useState(55.755864);
 	const [zoom, setZoom] = React.useState(9);
 
 	React.useEffect(() => {

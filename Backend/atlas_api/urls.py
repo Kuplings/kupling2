@@ -13,7 +13,7 @@ schema_view = get_schema_view(
         title="Atlas API",
         default_version="v1",
         description="",
-        contact=openapi.Contact(email="hanzla.tauqeer123@gmail.com"),
+        contact=openapi.Contact(email="kotkot@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=False,

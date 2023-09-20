@@ -11,7 +11,9 @@ User = get_user_model()
 class CustomTokenCreateSerializer(TokenCreateSerializer):
     def validate(self, attrs):
         password = attrs.get("password")
+        print('************************************************', password)
         params = {settings.LOGIN_FIELD: attrs.get(settings.LOGIN_FIELD)}
+        print(params)
         self.user = authenticate(
             request=self.context.get("request"), **params, password=password
         )

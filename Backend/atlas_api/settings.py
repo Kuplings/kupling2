@@ -10,7 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ENVIRONMENT = config("ENVIRONMENT")
 DEBUG = config("DEBUG", default=False, cast=bool)
 SECRET_KEY = config("SECRET_KEY")
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=lambda v: [s.strip() for s in v.split(",")])
+ALLOWED_HOSTS = [config("ALLOWED_HOSTS")]#config("ALLOWED_HOSTS", cast=lambda v: [s.strip() for s in v.split(",")])
+print(ALLOWED_HOSTS)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -52,10 +53,20 @@ ROOT_URLCONF = 'atlas_api.urls'
 AUTH_USER_MODEL = 'users.User'
 
 CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast=lambda v: [s.strip() for s in v.split(",")])
+print(CORS_ALLOWED_ORIGINS)
 
 CORS_ALLOW_METHODS = [
     'GET', 'POST', 'PUT', 'DELETE'
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    "http://127.0.0.1:3000",
+)
+
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000"]
+
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config("CLOUDINARY_CLOUD_NAME"),
@@ -106,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
@@ -127,12 +138,33 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = config("EMAIL_HOST")
-EMAIL_HOST_USER = config("EMAIL_USER")
-EMAIL_HOST_PASSWORD = config("EMAIL_PASSWORD")
+# EMAIL_HOST = config("EMAIL_HOST")
+# EMAIL_HOST_USER = config("EMAIL_USER")
+# EMAIL_HOST_PASSWORD = config("EMAIL_PASSWORD")
+EMAIL_HOST='smtp.yandex.ru'
+EMAIL_HOST_USER='kuplings@yandex.ru'
+EMAIL_HOST_PASSWORD='ncdemeeookjhquoj'
 EMAIL_PORT = 587
+print(EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
 
-CELERY_BROKER_URL = config("CELERY_BROKER")
+EMAIL_SERVER = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+
+
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+# CELERY settings
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_BROKER_TRANSPORT_OPTION = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+
+DOMAIN = '127.0.0.1:3000'
+SITE_NAME = 'kupling'
+
+
+# CELERY_BROKER_URL = config("CELERY_BROKER")
+# CELERY_RESULT_BACKEND = 'file:///home/kostik/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -161,6 +193,8 @@ DJOSER = {
         "current_user": 'users.serializers.UserSerializer',
     },
 }
+
+print(DJOSER)
 
 if ENVIRONMENT == "production":
     DATABASES['default'] = dj_database_url.config(
