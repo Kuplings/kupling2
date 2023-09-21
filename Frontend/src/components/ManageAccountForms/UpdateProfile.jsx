@@ -24,14 +24,14 @@ const UpdateProfile = () => {
 	};
 	const validationSchema = Yup.object().shape({
 		first_name: Yup.string()
-			.min(3, "Must be atleast 3 characters")
-			.max(12, "Must be Atleast 12 Characters or less")
-			.required("First Name is required"),
+			.min(3, "Не менее 3 символов")
+			.max(100, "Не более 100 символов")
+			.required("Обязательное поле"),
 		last_name: Yup.string()
-			.min(3, "Must be atleast 3 characters")
-			.max(12, "Must be Atleast 12 Characters or less")
-			.required("This Field is Required"),
-		phone_no: Yup.string().required("This Field is Required"),
+			.min(3, "Не менее 3 символов")
+			.max(100, "Не более 100 символов")
+			.required("Обязательное поле"),
+		phone_no: Yup.string().required("Обязательное поле"),
 	});
 	const onSubmit = (
 		{ first_name, last_name, phone_no },
@@ -45,7 +45,7 @@ const UpdateProfile = () => {
 			})
 			.then((res) => {
 				dispatch(
-					setNotificationMessage("Profile Updated Successfully!")
+					setNotificationMessage("Профиль успешно обновлён!")
 				);
 				resetForm();
 				dispatch(updateProfile(res.data));
@@ -94,23 +94,23 @@ const UpdateProfile = () => {
 								<Grid container spacing={2}>
 									<Grid item xs={12} sm={6}>
 										<MyFormTextInput
-											label="First Name"
+											label="Имя"
 											name="first_name"
-											placeholder="Ali"
+											placeholder="Анна"
 										/>
 									</Grid>
 									<Grid item xs={12} sm={6}>
 										<MyFormTextInput
-											label="Last Name"
+											label="Фамилия"
 											name="last_name"
-											placeholder="Hassan"
+											placeholder="Анисина"
 										/>
 									</Grid>
 									<Grid item xs={12}>
 										<MyFormTextInput
-											label="Phone Number"
+											label="Номер телефона"
 											name="phone_no"
-											placeholder="+921234567891"
+											placeholder="+79123456789"
 										/>
 									</Grid>
 								</Grid>

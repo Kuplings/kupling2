@@ -142,7 +142,7 @@ const ListingDetail = () => {
 											variant="h5"
 											component="div"
 										>
-											Seller Information
+											Покупатель:
 										</Typography>
 										<Divider sx={{ my: 1 }} />
 										<Typography
@@ -156,7 +156,7 @@ const ListingDetail = () => {
 											variant="body1"
 											color="text.secondary"
 										>
-											Joined Since{" "}
+											Зарегистрирован{" "}
 											{moment(
 												listing.user.date_joined
 											).format("MMM YYYY")}
@@ -200,15 +200,15 @@ const ListingDetail = () => {
 								<Card>
 									<CardContent>
 										<ListingInfo
-											label="Category"
+											label="Категория"
 											data={listing.category.name}
 										/>
 										<ListingInfo
-											label="Condition"
+											label="Состояние"
 											data={listing.get_condition_display}
 										/>
 										<ListingInfo
-											label="Offer Delivery"
+											label="Необходима доставка"
 											data={
 												listing.offer_delivery ? (
 													<Done color="primary" />
@@ -218,7 +218,7 @@ const ListingDetail = () => {
 											}
 										/>
 										<ListingInfo
-											label="Public Meetup"
+											label="Приеду сам(а)"
 											data={
 												listing.public_meetup ? (
 													<Done color="primary" />
@@ -228,7 +228,7 @@ const ListingDetail = () => {
 											}
 										/>
 										<ListingInfo
-											label="Door Pickup"
+											label="Нужна доставка"
 											data={
 												listing.door_pickup ? (
 													<Done color="primary" />
@@ -254,7 +254,7 @@ const ListingDetail = () => {
 											variant="h6"
 											component="div"
 										>
-											Description
+											Описание
 										</Typography>
 										<Typography
 											variant="body2"

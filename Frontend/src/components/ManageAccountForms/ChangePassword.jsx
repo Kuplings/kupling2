@@ -21,22 +21,22 @@ const ChangePassword = () => {
 	};
 	const validationSchema = Yup.object().shape({
 		current_password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required"),
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле"),
 		new_password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required"),
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле"),
 		confirm_new_password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required")
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле")
 			.when("password", {
 				is: (val) => (val && val.length > 0 ? true : false),
 				then: Yup.string().oneOf(
 					[Yup.ref("password")],
-					"Password does not match"
+					"Пароли не совпадает"
 				),
 			}),
 	});
@@ -53,7 +53,7 @@ const ChangePassword = () => {
 				resetForm();
 				setSubmitting(false);
 				dispatch(
-					setNotificationMessage("Password Changed Successfully!")
+					setNotificationMessage("Пароль успешно изменён!")
 				);
 			})
 			.catch(({ response }) => {
@@ -83,7 +83,7 @@ const ChangePassword = () => {
 				}}
 			>
 				<Typography component="h1" variant="h5">
-					Change Password
+					Смена пароля
 				</Typography>
 				<Box component="div" sx={{ mt: 3 }}>
 					<Formik
@@ -97,21 +97,21 @@ const ChangePassword = () => {
 								<Grid container spacing={2}>
 									<Grid item xs={12}>
 										<MyFormTextInput
-											label="Current Password"
+											label="Текущий пароль"
 											name="current_password"
 											type="password"
 										/>
 									</Grid>
 									<Grid item xs={12}>
 										<MyFormTextInput
-											label="New Password"
+											label="Новый пароль"
 											name="new_password"
 											type="password"
 										/>
 									</Grid>
 									<Grid item xs={12}>
 										<MyFormTextInput
-											label="Confirm New Password"
+											label="Подтвердите новый пароль"
 											name="confirm_new_password"
 											type="password"
 										/>
@@ -123,7 +123,7 @@ const ChangePassword = () => {
 											variant="contained"
 											loading={props.isSubmitting}
 										>
-											Change Password
+											Поменять пароль
 										</LoadingButton>
 									</Grid>
 								</Grid>

@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Atlas Mart 👋</h1>
+<h1 align="center">Welcome to Вы успешно вышли 👋</h1>
 <a href="https://github.com/1han zla100/Django-React-Marketplace/blob/master/License.txt"><img alt="GitHub license" src="https://img.shields.io/github/license/1han zla100/Django-React-Marketplace"></a>
 <a href="https://github.com/1han zla100/Django-React-Marketplace/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/1han zla100/Django-React-Marketplace"></a>
 <a href="https://github.com/1hanz la100/Django-React-Marketplace/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/1ha nzla100/Django-React-Marketplace"></a> <a href="https://github.com/1han zla100/Django-React-Marketplace/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/1han zla100/Django-React-Marketplace"></a>

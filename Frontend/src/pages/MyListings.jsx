@@ -55,7 +55,7 @@ const MyListings = () => {
 						component="div"
 						sx={{ mt: 3, textAlign: "center" }}
 					>
-						You have no listings
+						Вы пока не хотели ничего купить
 					</Typography>
 				) : null}
 			</Container>

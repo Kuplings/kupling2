@@ -119,7 +119,7 @@ const EditListing = () => {
 		axios
 			.delete(`mart/listings/${listing.slug}/delete-image/${image_id}/`)
 			.then(() => {
-				dispatch(setNotificationMessage("Image deleted successfully"));
+				dispatch(setNotificationMessage("Изображение успешно удалено"));
 			});
 	};
 
@@ -138,18 +138,18 @@ const EditListing = () => {
 
 	const validationSchema = Yup.object().shape({
 		title: Yup.string()
-			.min(10, "Must be atleast 10 characters")
-			.max(100, "Must be atmost 100 characters")
-			.required("This Field is Required"),
-		description: Yup.string().required("This Field is Required"),
-		category: Yup.string().required("This Field is Required"),
-		offer_delivery: Yup.boolean().required("This Field is Required"),
-		price: Yup.number().required("This Field is Required"),
-		public_meetup: Yup.boolean().required("This Field is Required"),
-		door_pickup: Yup.boolean().required("This Field is Required"),
-		drop_off: Yup.boolean().required("This Field is Required"),
+			.min(3, "Не менее 3 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле"),
+		description: Yup.string().required("Обязательное поле"),
+		category: Yup.string().required("Обязательное поле"),
+		offer_delivery: Yup.boolean().required("Обязательное поле"),
+		price: Yup.number().required("Обязательное поле"),
+		public_meetup: Yup.boolean().required("Обязательное поле"),
+		door_pickup: Yup.boolean().required("Обязательное поле"),
+		drop_off: Yup.boolean().required("Обязательное поле"),
 		images: Yup.mixed(),
-		condition: Yup.string().required("This Field is Required"),
+		condition: Yup.string().required("Обязательное поле"),
 	});
 	const onSubmit = (values, { setSubmitting, setFieldError, resetForm }) => {
 		const formData = new FormData();
@@ -184,7 +184,7 @@ const EditListing = () => {
 			.then((res) => {
 				setSubmitting(false);
 				dispatch(
-					setNotificationMessage("Listing Updated Successfully")
+					setNotificationMessage("Объявление успешно обновлено")
 				);
 				navigate(`/listings/${listing.slug}/`);
 			})
@@ -243,13 +243,13 @@ const EditListing = () => {
 								<Grid container spacing={2}>
 									<Grid item xs={12}>
 										<MyFormTextInput
-											label="Title"
+											label="Название"
 											name="title"
 										/>
 									</Grid>
 									<Grid item xs={12}>
 										<MyFormTextInput
-											label="Description"
+											label="Описание"
 											name="description"
 											multiline
 											rows={4}
@@ -257,21 +257,21 @@ const EditListing = () => {
 									</Grid>
 									<Grid item xs={12}>
 										<MyFormCategorySelect
-											label="Category"
+											label="Категория"
 											name="category"
 											items={categoryTypes}
 										/>
 									</Grid>
 									<Grid item xs={12}>
 										<MyFormConditionSelect
-											label="Condition"
+											label="Состояние"
 											name="condition"
 											items={conditions}
 										/>
 									</Grid>
 									<Grid item xs={12}>
 										<MyFormSwitch
-											label="Offer Delivery"
+											label="Необходима доставка"
 											name="offer_delivery"
 											type="checkbox"
 										/>
@@ -283,12 +283,12 @@ const EditListing = () => {
 									variant="h5"
 									sx={{ mb: 2 }}
 								>
-									Set Price
+									Желаемая цена
 								</Typography>
 								<Grid container spacing={2}>
 									<Grid item xs={12}>
 										<MyFormTextInput
-											label="Price"
+											label="Желаемая цена"
 											name="price"
 											icon={<AttachMoney />}
 											InputProps={{
@@ -376,7 +376,7 @@ const EditListing = () => {
 									variant="h5"
 									sx={{ mb: 2 }}
 								>
-									Upload New Images
+									Загрузить новые изображения
 								</Typography>
 								<Grid container spacing={2}>
 									<Grid item xs={12}>
@@ -415,13 +415,13 @@ const EditListing = () => {
 												variant="raised"
 												component="span"
 											>
-												Upload
+												Загрузить...
 											</Button>
 										</label>
 
 										{values.images ? (
 											<Typography sx={{ my: 2 }}>
-												{`${values.images.length} Images Selected`}
+												{`${values.images.length} Изображения выбраны`}
 											</Typography>
 										) : null}
 
@@ -470,19 +470,19 @@ const EditListing = () => {
 									variant="h5"
 									sx={{ mb: 2 }}
 								>
-									Meetup Preferences
+									Необходимость доставки
 								</Typography>
 								<Grid container spacing={2}>
 									<Grid item xs={12}>
 										<MyFormCheckbox
-											label="Public Meetup"
+											label="Приеду сам(а)"
 											name="public_meetup"
 											type="checkbox"
 										/>
 									</Grid>
 									<Grid item xs={12}>
 										<MyFormCheckbox
-											label="Door Pickup"
+											label="Нужна доставка"
 											name="door_pickup"
 											type="checkbox"
 										/>
@@ -501,7 +501,7 @@ const EditListing = () => {
 									variant="h5"
 									sx={{ mb: 2 }}
 								>
-									Select Location
+									Моё местоположение
 								</Typography>
 								<Box
 									sx={{
@@ -519,7 +519,7 @@ const EditListing = () => {
 									variant="contained"
 									loading={isSubmitting}
 								>
-									Post Now
+									Опубликовать
 								</LoadingButton>
 							</Form>
 						)}

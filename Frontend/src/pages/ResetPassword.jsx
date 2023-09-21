@@ -22,8 +22,8 @@ const ResetPassword = () => {
 	};
 	const validationSchema = Yup.object({
 		email: Yup.string()
-			.email("Invalid Email")
-			.required("This Field is Required"),
+			.email("Некорректная почта")
+			.required("Обязательное поле"),
 	});
 	const onSubmit = ({ email }, { setSubmitting, resetForm }) => {
 		axios
@@ -35,7 +35,7 @@ const ResetPassword = () => {
 				setSubmitting(false);
 				dispatch(
 					setNotificationMessage(
-						"Password Reset Email has just been sent to your email address!"
+						"Письмо для сброса пароля отправлено на указанную Вами почту!"
 					)
 				);
 			});
@@ -59,7 +59,7 @@ const ResetPassword = () => {
 						<LockOpenOutlined />
 					</Avatar>
 					<Typography component="h1" variant="h5">
-						Reset Password
+						Сброс пароля
 					</Typography>
 					<Box component="div" sx={{ mt: 3 }}>
 						<Formik
@@ -84,7 +84,7 @@ const ResetPassword = () => {
 												variant="contained"
 												loading={props.isSubmitting}
 											>
-												Reset Password
+												Сбросить пароль
 											</LoadingButton>
 										</Grid>
 									</Grid>

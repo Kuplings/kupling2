@@ -42,7 +42,7 @@ export default function MenuAppBar() {
 	const logout = () => {
 		dispatch(removeTokens());
 		dispatch(removeUser());
-		dispatch(setNotificationMessage("Logged out successfully"));
+		dispatch(setNotificationMessage("Вы успешно вышли!"));
 	};
 	const handleMenu = (event) => {
 		setAnchorEl(event.currentTarget);
@@ -79,7 +79,7 @@ export default function MenuAppBar() {
 									fontFamily: '"Festive", cursive',
 								}}
 							>
-								Atlas Mart
+								Куплинг
 							</Typography>
 						</Link>
 						<Box sx={{ display: { md: "flex", xs: "none" } }}>
@@ -94,7 +94,7 @@ export default function MenuAppBar() {
 											sx={{ color: "white" }}
 											startIcon={<CameraAltOutlined />}
 										>
-											Start Selling
+											Куплю
 										</Button>
 									</Link>
 									<IconButton
@@ -134,7 +134,7 @@ export default function MenuAppBar() {
 													<ArticleOutlined fontSize="small" />
 												</ListItemIcon>
 												<ListItemText>
-													My Listings
+													Мои покупки
 												</ListItemText>
 											</MenuItem>
 										</Link>
@@ -152,7 +152,7 @@ export default function MenuAppBar() {
 													<AccountCircleOutlined fontSize="small" />
 												</ListItemIcon>
 												<ListItemText>
-													Manage Account
+													Аккаунт
 												</ListItemText>
 											</MenuItem>
 										</Link>
@@ -166,7 +166,7 @@ export default function MenuAppBar() {
 											<ListItemIcon>
 												<Logout fontSize="small" />
 											</ListItemIcon>
-											<ListItemText>Logout</ListItemText>
+											<ListItemText>Выход</ListItemText>
 										</MenuItem>
 									</Menu>
 								</div>
@@ -181,7 +181,7 @@ export default function MenuAppBar() {
 											sx={{ color: "white" }}
 											startIcon={<Login />}
 										>
-											Login
+											Вход
 										</Button>
 									</Link>
 									<Link
@@ -195,7 +195,7 @@ export default function MenuAppBar() {
 												<PersonAddAlt1Outlined />
 											}
 										>
-											Signup
+											Регистрация
 										</Button>
 									</Link>
 								</div>
@@ -235,7 +235,7 @@ export default function MenuAppBar() {
 								fontFamily: '"Festive", cursive',
 							}}
 						>
-							Atlas Mart
+							Куплинг
 						</Typography>
 					</Toolbar>
 					<Divider />
@@ -254,7 +254,7 @@ export default function MenuAppBar() {
 											<CameraAltOutlined fontSize="small" />
 										</ListItemIcon>
 										<ListItemText>
-											Start Selling
+											Куплю
 										</ListItemText>
 									</ListItem>
 								</Link>
@@ -269,7 +269,7 @@ export default function MenuAppBar() {
 										<ListItemIcon>
 											<ArticleOutlined fontSize="small" />
 										</ListItemIcon>
-										<ListItemText>My Listings</ListItemText>
+										<ListItemText>Мои покупки</ListItemText>
 									</ListItem>
 								</Link>
 							</List>
@@ -287,7 +287,7 @@ export default function MenuAppBar() {
 											<AccountCircleOutlined fontSize="small" />
 										</ListItemIcon>
 										<ListItemText>
-											Manage Account
+											Аккаунт
 										</ListItemText>
 									</ListItem>
 								</Link>
@@ -302,7 +302,7 @@ export default function MenuAppBar() {
 									<ListItemIcon>
 										<Logout fontSize="small" />
 									</ListItemIcon>
-									<ListItemText>Logout</ListItemText>
+									<ListItemText>Выход</ListItemText>
 								</ListItem>
 							</List>
 						</>
@@ -320,7 +320,7 @@ export default function MenuAppBar() {
 										<ListItemIcon>
 											<Login />
 										</ListItemIcon>
-										<ListItemText primary="Login" />
+										<ListItemText primary="Вход" />
 									</ListItem>
 								</Link>
 								<Link
@@ -334,7 +334,7 @@ export default function MenuAppBar() {
 										<ListItemIcon>
 											<PersonAddAlt1Outlined />
 										</ListItemIcon>
-										<ListItemText primary="Signup" />
+										<ListItemText primary="Регистрация" />
 									</ListItem>
 								</Link>
 							</List>

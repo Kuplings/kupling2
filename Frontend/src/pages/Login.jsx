@@ -25,12 +25,12 @@ const Login = () => {
 	};
 	const validationSchema = Yup.object().shape({
 		email: Yup.string()
-			.email("Invalid Email")
-			.required("This Field is Required"),
+			.email("Некорректная почта")
+			.required("Обязательное поле"),
 		password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required"),
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле"),
 	});
 
 	const onSubmit = (
@@ -63,7 +63,7 @@ const Login = () => {
 									if (res.status === 204) {
 										setFieldError(
 											"email",
-											"Your Email is not verified! We have resent verification email"
+											"Вы почта не подтверждена. Пожалуйста, проверьте почту, чтобы завершить регистрацию."
 										);
 									}
 								});
@@ -121,7 +121,7 @@ const Login = () => {
 										</Grid>
 										<Grid item xs={12}>
 											<MyFormTextInput
-												label="Password"
+												label="Пароль"
 												name="password"
 												type="password"
 											/>
@@ -143,7 +143,7 @@ const Login = () => {
 													component="p"
 													variant="body2"
 												>
-													Dont have account? Signup
+													Регистрация
 												</MuiLink>
 											</Link>
 										</Grid>
@@ -155,7 +155,7 @@ const Login = () => {
 										sx={{ mt: 2, mb: 2 }}
 										loading={props.isSubmitting}
 									>
-										Login
+										Вход
 									</LoadingButton>
 									<Grid container justifyContent="flex-end">
 										<Grid item>
@@ -169,7 +169,7 @@ const Login = () => {
 													component="p"
 													variant="body2"
 												>
-													Forget Password?
+													Забыли пароль?
 												</MuiLink>
 											</Link>
 										</Grid>

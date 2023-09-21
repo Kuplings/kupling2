@@ -28,30 +28,30 @@ const Signup = () => {
 	};
 	const validationSchema = Yup.object({
 		first_name: Yup.string()
-			.min(3, "Must be atleast 3 characters")
-			.max(12, "Must be Atleast 12 Characters or less")
-			.required("First Name is required"),
+			.min(3, "Не менее 3 символов")
+			.max(100, "Не более 100 символов")
+			.required("Обязательное поле"),
 		last_name: Yup.string()
-			.min(3, "Must be atleast 3 characters")
-			.max(12, "Must be Atleast 12 Characters or less")
-			.required("This Field is Required"),
+			.min(3, "Не менее 3 символов")
+			.max(100, "Не более 100 символов")
+			.required("Обязательное поле"),
 		email: Yup.string()
-			.email("Invalid Email")
-			.required("This Field is Required"),
-		phone_no: Yup.string().required("This Field is Required"),
+			.email("Некорректная почта")
+			.required("Обязательное поле"),
+		phone_no: Yup.string().required("Обязательное поле"),
 		password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required"),
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле"),
 		confirm_password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required")
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле")
 			.when("password", {
 				is: (val) => (val && val.length > 0 ? true : false),
 				then: Yup.string().oneOf(
 					[Yup.ref("password")],
-					"Password does not match"
+					"Пароли не совпадает"
 				),
 			}),
 	});
@@ -73,7 +73,7 @@ const Signup = () => {
 					resetForm();
 					dispatch(
 						setNotificationMessage(
-							"Please Click on the link that has just been sent to your email address to verify your email and activate your account"
+							"Мы отправили Вам на почту ссылку для подтверждения регистрации. Пожалуйста, перейдите по ссылке, чтобы подтвердить почту и завершить регистрацию."
 						)
 					);
 				}
@@ -115,7 +115,7 @@ const Signup = () => {
 						<PersonAddAltOutlined />
 					</Avatar>
 					<Typography component="h1" variant="h5">
-						Signup
+						Регистрация
 					</Typography>
 					<Box component="div" sx={{ mt: 3 }}>
 						<Formik
@@ -129,18 +129,18 @@ const Signup = () => {
 									<Grid container spacing={2}>
 										<Grid item xs={12} sm={6}>
 											<MyFormTextInput
-												label="First Name"
+												label="Имя"
 												name="first_name"
 												id="first_name"
-												placeholder="Ali"
+												placeholder="Анна"
 												autoFocus
 											/>
 										</Grid>
 										<Grid item xs={12} sm={6}>
 											<MyFormTextInput
-												label="Last Name"
+												label="Фамилия"
 												name="last_name"
-												placeholder="Hassan"
+												placeholder="Анисина"
 											/>
 										</Grid>
 										<Grid item xs={12}>
@@ -152,21 +152,21 @@ const Signup = () => {
 										</Grid>
 										<Grid item xs={12}>
 											<MyFormTextInput
-												label="Phone Number"
+												label="Номер телефона"
 												name="phone_no"
-												placeholder="+921234567891"
+												placeholder="+79123456789"
 											/>
 										</Grid>
 										<Grid item xs={12}>
 											<MyFormTextInput
-												label="Password"
+												label="Пароль"
 												name="password"
 												type="password"
 											/>
 										</Grid>
 										<Grid item xs={12}>
 											<MyFormTextInput
-												label="Confirm Password"
+												label="Подтверждение пароля"
 												name="confirm_password"
 												type="password"
 											/>
@@ -179,7 +179,7 @@ const Signup = () => {
 										sx={{ mt: 3, mb: 2 }}
 										loading={props.isSubmitting}
 									>
-										Signup
+										Регистрация
 									</LoadingButton>
 									<Grid container justifyContent="flex-end">
 										<Grid item>
@@ -193,8 +193,8 @@ const Signup = () => {
 													component="p"
 													variant="body2"
 												>
-													Already have an account?
-													Login
+													Уже есть аккаунт?
+													Вход
 												</MuiLink>
 											</Link>
 										</Grid>

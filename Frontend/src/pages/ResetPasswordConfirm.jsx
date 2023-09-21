@@ -25,18 +25,18 @@ const ResetPasswordConfirm = () => {
 	};
 	const validationSchema = Yup.object({
 		new_password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required"),
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле"),
 		confirm_new_password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required")
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле")
 			.when("password", {
 				is: (val) => (val && val.length > 0 ? true : false),
 				then: Yup.string().oneOf(
 					[Yup.ref("password")],
-					"Password does not match"
+					"Пароли не совпадает"
 				),
 			}),
 	});
@@ -56,7 +56,7 @@ const ResetPasswordConfirm = () => {
 				setSubmitting(false);
 				navigate("/login");
 				dispatch(
-					setNotificationMessage("Password Reset Successfully!")
+					setNotificationMessage("Пароль удачно сброшен!")
 				);
 			})
 			.catch(({ response }) => {
@@ -89,7 +89,7 @@ const ResetPasswordConfirm = () => {
 						<LockOpenOutlined />
 					</Avatar>
 					<Typography component="h1" variant="h5">
-						Reset Password
+						Смена пароля
 					</Typography>
 					<Box component="div" sx={{ mt: 3 }}>
 						<Formik
@@ -102,14 +102,14 @@ const ResetPasswordConfirm = () => {
 									<Grid container spacing={2}>
 										<Grid item xs={12}>
 											<MyFormTextInput
-												label="New Password"
+												label="Новый пароль"
 												name="new_password"
 												type="password"
 											/>
 										</Grid>
 										<Grid item xs={12}>
 											<MyFormTextInput
-												label="Confirm New Password"
+												label="Подтвердите новый пароль"
 												name="confirm_new_password"
 												type="password"
 											/>
@@ -121,7 +121,7 @@ const ResetPasswordConfirm = () => {
 												variant="contained"
 												loading={props.isSubmitting}
 											>
-												Reset Password
+												Сменить пароль
 											</LoadingButton>
 										</Grid>
 									</Grid>

@@ -101,7 +101,7 @@ const CategoryListing = () => {
 					validationSchema={Yup.object({
 						search: Yup.string().max(
 							250,
-							"Must be Atleast 250 Characters or less"
+							"Не более 250 символов"
 						),
 					})}
 					onSubmit={({ search }, { setSubmitting }) => {
@@ -125,7 +125,7 @@ const CategoryListing = () => {
 								}}
 							>
 								<MyFormTextInput
-									label="Search"
+									label="Поиск"
 									name="search"
 									placeholder="Find everything you need"
 									InputProps={{
@@ -171,7 +171,7 @@ const CategoryListing = () => {
 											mt: { md: 0, xs: 2 },
 										}}
 									>
-										Order By
+										Сортировка
 									</Button>
 									<Button
 										id="basic-button"
@@ -189,7 +189,7 @@ const CategoryListing = () => {
 											mt: { md: 0, xs: 2 },
 										}}
 									>
-										Categories
+										Категории
 									</Button>
 								</Box>
 								<Dialog
@@ -217,7 +217,7 @@ const CategoryListing = () => {
 											}}
 										>
 											<CategoryOutlined sx={{ mr: 1 }} />
-											Categories
+											Категории
 										</Box>
 										<IconButton
 											onClick={() =>
@@ -312,7 +312,7 @@ const CategoryListing = () => {
 											setListingOrder(ordering.latest);
 										}}
 									>
-										By Latest
+										Сначала новые
 									</MenuItem>
 									<MenuItem
 										onClick={() => {
@@ -320,7 +320,7 @@ const CategoryListing = () => {
 											setListingOrder(ordering.oldest);
 										}}
 									>
-										By Oldest
+										Сначала старые
 									</MenuItem>
 									<MenuItem
 										onClick={() => {
@@ -328,7 +328,7 @@ const CategoryListing = () => {
 											setListingOrder(ordering.title);
 										}}
 									>
-										By Title
+										По имени
 									</MenuItem>
 								</Menu>
 							</Box>
@@ -364,7 +364,7 @@ const CategoryListing = () => {
 								component="div"
 								sx={{ mt: 3, textAlign: "center" }}
 							>
-								No listings found
+								Ничего не найдено
 							</Typography>
 						) : null}
 					</>

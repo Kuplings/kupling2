@@ -47,13 +47,13 @@ const EmailConfirmation = () => {
 				{!isActivated ? (
 					<>
 						<Typography variant="h4">
-							{!error ? "Processing..." : <>{error}</>}
+							{!error ? "Обработка..." : <>{error}</>}
 						</Typography>
 					</>
 				) : (
 					<>
 						<Typography variant="h4">
-							Email Verified and Account is Activated
+							Почта подтверждёна и аккаунт активирован
 						</Typography>
 					</>
 				)}
@@ -63,7 +63,7 @@ const EmailConfirmation = () => {
 						sx={{ color: "white", marginTop: "1rem" }}
 						startIcon={<ArrowBack />}
 					>
-						Go Back to Home Page
+						Скорее к покупкам!
 					</Button>
 				</Link>
 			</Box>

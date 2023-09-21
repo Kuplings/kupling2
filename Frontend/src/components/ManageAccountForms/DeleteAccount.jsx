@@ -34,9 +34,9 @@ const DeleteAccount = () => {
 	};
 	const validationSchema = Yup.object().shape({
 		current_password: Yup.string()
-			.min(8, "Must be atleast 8 characters")
-			.max(20, "Must be Atleast 20 Characters or less")
-			.required("This Field is Required"),
+			.min(8, "Не менее 8 символов")
+			.max(255, "Не более 255 символов")
+			.required("Обязательное поле"),
 	});
 	const onSubmit = (
 		{ current_password },
@@ -120,7 +120,7 @@ const DeleteAccount = () => {
 							<Form>
 								<DialogContent>
 									<MyFormTextInput
-										label="Current Password"
+										label="Текущий пароль"
 										name="current_password"
 										type="password"
 									/>

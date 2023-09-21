@@ -32,7 +32,7 @@ const NotFound = () => {
 						fontSize: { xs: "1.5rem", sm: "2rem" },
 					}}
 				>
-					Page Not Found!
+					Страница не создана, либо не найдена!
 				</Typography>
 				<Link style={{ textDecoration: "none" }} to="/">
 					<Button
@@ -40,7 +40,7 @@ const NotFound = () => {
 						sx={{ color: "white", marginTop: "1rem" }}
 						startIcon={<ArrowBack />}
 					>
-						Go Back to Home Page
+						Вернуться к списку покупок
 					</Button>
 				</Link>
 			</Box>
