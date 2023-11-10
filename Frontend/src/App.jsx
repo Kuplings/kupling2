@@ -25,14 +25,33 @@ import {
 	removeNotificationMessage,
 } from "./store/slices/notificationSlice";
 import { Alert, Snackbar } from "@mui/material";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 
 import CreateListing from "./pages/CreateListing";
 import ListingDetail from "./pages/ListingDetail";
 import CategoryListing from "./pages/CategoryListing";
 import MyListings from "./pages/MyListings";
 import EditListing from "./pages/EditListing";
+import MyChats from "./pages/ListingChat"
 
 function App() {
+	const { readyState } = useWebSocket("ws://127.0.0.1:8000/", {
+    onOpen: () => {
+      console.log("Connected!");
+    },
+    onClose: () => {
+      console.log("Disconnected!");
+    }
+  });
+ 
+  const connectionStatus = {
+    [ReadyState.CONNECTING]: "Connecting",
+    [ReadyState.OPEN]: "Open",
+    [ReadyState.CLOSING]: "Closing",
+    [ReadyState.CLOSED]: "Closed",
+    [ReadyState.UNINSTANTIATED]: "Uninstantiated"
+  }[readyState];
+
 	const getNewToken = (refresh) => {
 		const newToken = axios
 			.post("token/refresh/", {
@@ -89,6 +108,9 @@ function App() {
 
 	return (
 		<>
+			<div>
+      			<span>The WebSocket is currently {connectionStatus}</span>
+    		</div>
 			<Snackbar
 				open={Boolean(notification.message)}
 				autoHideDuration={6000}
@@ -135,6 +157,9 @@ function App() {
 					<Route path="/my-listings" element={<PrivateRoute />}>
 						<Route path="/my-listings" element={<MyListings />} />
 					</Route>
+					<Route path="/chats" element={<PrivateRoute />}>
+						<Route path="/chats" element={<MyChats />} />
+					</Route>
 					<Route path="/create-listing" element={<PrivateRoute />}>
 						<Route
 							path="/create-listing"
@@ -152,7 +177,9 @@ function App() {
 					/>
 				</Routes>
 			</BrowserRouter>
+
 		</>
+		
 	);
 }
 

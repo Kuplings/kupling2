@@ -14,6 +14,8 @@ ALLOWED_HOSTS = [config("ALLOWED_HOSTS")]#config("ALLOWED_HOSTS", cast=lambda v:
 print(ALLOWED_HOSTS)
 
 INSTALLED_APPS = [
+    'daphne',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -24,6 +26,7 @@ INSTALLED_APPS = [
 
     'users',
     'mart',
+    'chat',
 
     'django_filters',
     'drf_yasg',
@@ -35,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +98,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'atlas_api.wsgi.application'
+ASGI_APPLICATION = 'atlas_api.asgi.application'
 
 DATABASES = {
     'default': {
@@ -138,14 +143,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 EMAIL_USE_TLS = True
-# EMAIL_HOST = config("EMAIL_HOST")
-# EMAIL_HOST_USER = config("EMAIL_USER")
-# EMAIL_HOST_PASSWORD = config("EMAIL_PASSWORD")
-EMAIL_HOST='smtp.yandex.ru'
-EMAIL_HOST_USER='kuplings@yandex.ru'
-EMAIL_HOST_PASSWORD='ncdemeeookjhquoj'
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_HOST_USER = config("EMAIL_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_PASSWORD")
 EMAIL_PORT = 587
-print(EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
 
 EMAIL_SERVER = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
@@ -161,6 +162,15 @@ CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
 DOMAIN = '127.0.0.1:3000'
 SITE_NAME = 'kupling'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(REDIS_HOST, REDIS_PORT)],
+        },
+    },
+}
 
 
 # CELERY_BROKER_URL = config("CELERY_BROKER")
@@ -194,8 +204,6 @@ DJOSER = {
     },
 }
 
-print(DJOSER)
-
 if ENVIRONMENT == "production":
     DATABASES['default'] = dj_database_url.config(
         default=config("DATABASE_URL")
@@ -223,4 +231,3 @@ if ENVIRONMENT == "production":
     SECURE_SSL_REDIRECT = True
     SECURE_BROWSER_XSS_FILTER = True
 
-    django_heroku.settings(locals())

@@ -8,6 +8,7 @@ import {
 	ImageList,
 	ImageListItem,
 	Typography,
+	Button,
 } from "@mui/material";
 import axios from "axios";
 import React from "react";
@@ -21,7 +22,9 @@ import {
 	PhoneOutlined,
 } from "@mui/icons-material";
 import moment from "moment";
+import 'moment/locale/ru';
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+
 
 const ListingInfo = ({ label, data }) => {
 	return (
@@ -47,6 +50,7 @@ const ListingDetail = () => {
 	const { slug } = useParams();
 	const mapContainer = React.useRef(null);
 	const map = React.useRef(null);
+	moment.locale('ru')
 	React.useEffect(() => {
 		if (listing) {
 			if (map.current) return; // initialize map only once
@@ -66,6 +70,25 @@ const ListingDetail = () => {
 		}
 	}, [listing]);
 	const navigate = useNavigate();
+
+	const handleCreateChat = () => {
+		// Соберите информацию о пользователе, с которым вы хотите начать чат.
+		const otherUserId = listing.user.id; // Пример: идентификатор пользователя в объявлении.
+	  
+		// Выполните POST-запрос к серверу для создания чата.
+		axios.post("api/create-chat/", { otherUserId })
+		  .then((response) => {
+			// Обработайте успешный ответ от сервера, который может содержать информацию о созданном чате.
+			const chatId = response.data.chatId; // Пример: получите идентификатор созданного чата.
+	  
+			// Перенаправьте пользователя на страницу чата, передав информацию о чате.
+			navigate(`/chat/${chatId}`); // Пример: перенаправление на страницу чата.
+		  })
+		  .catch((error) => {
+			console.error("Ошибка при создании чата", error);
+			// Здесь вы можете обработать ошибку, например, отобразив сообщение об ошибке.
+		  });
+	  };
 
 	React.useEffect(() => {
 		axios
@@ -115,7 +138,7 @@ const ListingDetail = () => {
 											variant="h5"
 											component="div"
 										>
-											$ {listing.price}
+											{listing.price} ₽
 										</Typography>
 										<Typography
 											variant="body1"
@@ -178,6 +201,22 @@ const ListingDetail = () => {
 												{listing.user.email}
 											</Typography>
 										</Box>
+										<Box
+											sx={{
+												display: "flex",
+												alignItems: "center",
+												mt: 1,
+											}}
+											>
+											<Button
+												variant="outlined"
+												color="primary"
+												startIcon={<MailOutlineOutlined />}
+												onClick={handleCreateChat} // Обработчик события для создания чата
+											>
+												Начать чат
+											</Button>
+											</Box>
 										<Box
 											sx={{
 												display: "flex",

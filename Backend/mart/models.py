@@ -28,10 +28,10 @@ class Category(models.Model):
 
 class Listing(models.Model):
     class ConditionChoices(models.TextChoices):
-        NEW = 'NEW', 'New'
-        USED_LIKE_NEW = 'USED_LIKE_NEW', 'Used - Like New'
-        USED_GOOD = 'USED_GOOD', 'Useed - Good'
-        USED_FAIR = 'USED_FAIR', 'Used - Fair'
+        NEW = 'NEW', 'Новая'
+        USED_LIKE_NEW = 'USED_LIKE_NEW', 'Б/У - Как новая'
+        USED_GOOD = 'USED_GOOD', 'Б/У - Хорошая'
+        USED_FAIR = 'USED_FAIR', 'Б/У - Удовлетворительная'
 
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=500, blank=True, null=True)
@@ -76,6 +76,7 @@ def question_slug_generator(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Listing)
 def tag_slug_generator(sender, instance, created, **kwargs):
+    print(sender, instance, created)
     if created:
         instance.slug = unique_slug_generator_by_title(instance)
         instance.save()

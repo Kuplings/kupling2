@@ -20,3 +20,7 @@ whitenoise>=5.2.0
 django-phonenumber-field
 phonenumbers
 drf-yasg
+redis
+unidecode
+channels
+channels_redis

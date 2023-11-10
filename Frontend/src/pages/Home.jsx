@@ -319,7 +319,7 @@ const Home = () => {
 					)}
 				</Formik>
 				<Typography variant="h4" sx={{ my: 3 }}>
-					Recent Listings
+					Недавние объявления
 				</Typography>
 				<Grid container spacing={3}>
 					{data &&

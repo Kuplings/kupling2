@@ -62,16 +62,16 @@ const ListingCard = ({ item, showActions }) => {
 				fullWidth
 			>
 				<DialogTitle id="responsive-dialog-title">
-					Delete Listing
+					Удалить покупку
 				</DialogTitle>
 				<DialogContent>
 					<Typography>
-						Are you sure you want to delete this listing?
+						Вы уверены, что хотите удалить покупку?
 					</Typography>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={() => setDeleteListingDialog(false)}>
-						Cancel
+						Отмена
 					</Button>
 					<Button
 						color="error"
@@ -83,7 +83,7 @@ const ListingCard = ({ item, showActions }) => {
 						variant="contained"
 						sx={{ mt: 2, mb: 2 }}
 					>
-						Delete Account
+						Удалить
 					</Button>
 				</DialogActions>
 			</Dialog>
@@ -100,7 +100,7 @@ const ListingCard = ({ item, showActions }) => {
 					/>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="div">
-							$ {item.price}
+							{item.price} ₽
 						</Typography>
 						<Typography variant="body1" color="text.secondary">
 							{item.title.length > 50

@@ -1,15 +1,3 @@
-<h1 align="center">Welcome to Вы успешно вышли 👋</h1>
-<a href="https://github.com/1han zla100/Django-React-Marketplace/blob/master/License.txt"><img alt="GitHub license" src="https://img.shields.io/github/license/1han zla100/Django-React-Marketplace"></a>
-<a href="https://github.com/1han zla100/Django-React-Marketplace/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/1han zla100/Django-React-Marketplace"></a>
-<a href="https://github.com/1hanz la100/Django-React-Marketplace/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/1ha nzla100/Django-React-Marketplace"></a> <a href="https://github.com/1han zla100/Django-React-Marketplace/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/1han zla100/Django-React-Marketplace"></a>
-
-## Atlas Mart is a OLX like Marketplace built with Python Django and React.js, Material UI
-
-If you want to **contribute** and make this much better for other developer have a look at [Issues](https://github.com/1han zla100/Django-React-Marketplace/issues).
-
-If you created something awesome and want to contribute then feel free to open an [pull request](https://github.com/1han zla100/Django-React-Marketplace/pulls).
-
-
 ## Features
 
 - ✔️ Login / Signup / EMail Verification
@@ -49,6 +37,10 @@ $ cd Django-React-Marketplace
 $ cd Frontend && yarn
 $ cd Backend && pip install -r requirements.txt
 
+# Install redis
+$ sudo apt-get install redis-server
+$ sudo service redis-server restart
+
 # Start React development server
 $ cd Frontend
 $ yarn start
@@ -73,14 +65,3 @@ $ python manage.py runserver
 -   [Cloudinary](https://cloudinary.com/)
 -   [Djoser](https://djoser.readthedocs.io/)
 
-## Author
-
-👤 **Ha nzla Tauqeer**
-
--   Website: https://han zla.netlify.app
--   Github: [@1han zla100](https://github.com/1han zla100)
--   LinkedIn: [@1han zla100](https://linkedin.com/in/1han zla100)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!

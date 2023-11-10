@@ -73,7 +73,7 @@ export default function MenuAppBar() {
 						>
 							<Typography
 								variant="h4"
-								color="white"
+								color="indigo"
 								sx={{
 									flexGrow: 1,
 									fontFamily: '"Festive", cursive',
@@ -91,7 +91,7 @@ export default function MenuAppBar() {
 									>
 										<Button
 											variant="text"
-											sx={{ color: "white" }}
+											sx={{ color: "indigo" }}
 											startIcon={<CameraAltOutlined />}
 										>
 											Куплю
@@ -178,7 +178,7 @@ export default function MenuAppBar() {
 									>
 										<Button
 											variant="text"
-											sx={{ color: "white" }}
+											sx={{ color: "indigo" }}
 											startIcon={<Login />}
 										>
 											Вход
@@ -190,7 +190,7 @@ export default function MenuAppBar() {
 									>
 										<Button
 											variant="text"
-											sx={{ color: "white" }}
+											sx={{ color: "indigo" }}
 											startIcon={
 												<PersonAddAlt1Outlined />
 											}

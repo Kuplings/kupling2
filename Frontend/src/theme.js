@@ -1,10 +1,10 @@
-import { blue, pink } from "@mui/material/colors";
+import { orange, pink } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 export default createTheme({
 	palette: {
 		primary: {
-			main: blue[500],
+			main: orange[600],
 		},
 		secondary: {
 			main: pink[500],

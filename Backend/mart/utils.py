@@ -2,9 +2,10 @@
 import random
 import string
 from django.utils.text import slugify
+from unidecode import unidecode 
 
 
-def random_string_generator(size, chars=string.ascii_uppercase + string.digits):
+def random_string_generator(size, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 
@@ -27,9 +28,8 @@ def unique_slug_generator_by_title(instance, new_slug=None):
     if new_slug is not None:
         slug = new_slug
     else:
-        slug = slugify(instance.title)
+        slug = slugify(unidecode(instance.title))
 
-    slug = slugify(instance.title)
     Klass = instance.__class__
     qs_exists = Klass.objects.filter(slug=slug).exists()
     if qs_exists:

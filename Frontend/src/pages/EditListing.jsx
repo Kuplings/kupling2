@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Navbar from "../components/Navbar";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from "react-number-format";
 import {
 	Container,
 	CssBaseline,
@@ -25,7 +25,7 @@ import MyFormCategorySelect from "../components/InputFields/MyFormCategorySelect
 import axios from "axios";
 import LoadingButton from "@mui/lab/LoadingButton";
 import MyFormConditionSelect from "../components/InputFields/MyFormConditionSelect";
-import { AttachMoney, Delete } from "@mui/icons-material";
+import { CurrencyRuble, Delete } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { setNotificationMessage } from "../store/slices/notificationSlice";
 import { useNavigate, useParams } from "react-router-dom";
@@ -34,7 +34,7 @@ const PriceFormat = React.forwardRef(function NumberFormatCustom(props, ref) {
 	const { onChange, ...other } = props;
 
 	return (
-		<NumberFormat {...other} {...props} getInputRef={ref} isNumericString />
+		<NumericFormat {...other} {...props} getInputRef={ref} isNumericString />
 	);
 });
 
@@ -223,7 +223,7 @@ const EditListing = () => {
 						component="h1"
 						variant="h5"
 					>
-						Create New Listing
+						Изменить условия покупки
 					</Typography>
 					<Formik
 						enableReinitialize={true}
@@ -238,7 +238,7 @@ const EditListing = () => {
 									variant="h5"
 									sx={{ mb: 2 }}
 								>
-									Listing Details
+									Детали покупки
 								</Typography>
 								<Grid container spacing={2}>
 									<Grid item xs={12}>
@@ -290,12 +290,12 @@ const EditListing = () => {
 										<MyFormTextInput
 											label="Желаемая цена"
 											name="price"
-											icon={<AttachMoney />}
+											icon={<CurrencyRuble />}
 											InputProps={{
 												inputComponent: PriceFormat,
 												startAdornment: (
 													<InputAdornment position="start">
-														<AttachMoney />
+														<CurrencyRuble />
 													</InputAdornment>
 												),
 											}}
