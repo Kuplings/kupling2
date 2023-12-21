@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
@@ -17,7 +17,9 @@ const App = lazy(() => import("./App"));
 axios.defaults.baseURL = process.env.REACT_APP_BACKEND_HOST;
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS;
 
-ReactDOM.render(
+createRoot(
+		document.getElementById("root")
+).render(
 	<React.StrictMode>
 		<ThemeProvider theme={theme}>
 			<Provider store={store}>
@@ -26,8 +28,7 @@ ReactDOM.render(
 				</Suspense>
 			</Provider>
 		</ThemeProvider>
-	</React.StrictMode>,
-	document.getElementById("root")
+	</React.StrictMode>
 );
 
 serviceWorker.unregister();

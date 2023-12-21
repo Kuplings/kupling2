@@ -19,11 +19,12 @@ application = get_asgi_application()
 from . import routing  # noqa isort:skip
  
 from channels.routing import ProtocolTypeRouter, URLRouter  # noqa isort:skip
+from django_channels_jwt_auth_middleware.auth import JWTAuthMiddlewareStack
  
  
 application = ProtocolTypeRouter(
     {
         "http": get_asgi_application(),
-        "websocket": URLRouter(routing.websocket_urlpatterns),
+        "websocket": JWTAuthMiddlewareStack(URLRouter(routing.websocket_urlpatterns)),
     }
 )

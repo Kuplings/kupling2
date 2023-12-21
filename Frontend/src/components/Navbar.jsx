@@ -14,6 +14,7 @@ import {
 	PersonAddAlt1Outlined,
 	ArticleOutlined,
 	CameraAltOutlined,
+	MailOutlineOutlined,
 } from "@mui/icons-material";
 import { removeTokens, tokensState } from "../store/slices/tokensSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,6 +28,7 @@ import {
 	List,
 	ListItem,
 	Divider,
+	ListItemButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Box } from "@mui/system";
@@ -85,6 +87,18 @@ export default function MenuAppBar() {
 						<Box sx={{ display: { md: "flex", xs: "none" } }}>
 							{tokens && tokens.access ? (
 								<div>
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/messages"
+									>
+										<Button
+											variant="text"
+											sx={{ color: "indigo" }}
+											startIcon={<MailOutlineOutlined />}
+										>
+											Сообщения
+										</Button>
+									</Link>
 									<Link
 										style={{ textDecoration: "none" }}
 										to="/create-listing"
@@ -249,14 +263,30 @@ export default function MenuAppBar() {
 									}}
 									to="/create-listing"
 								>
-									<ListItem button>
+									<ListItemButton>
 										<ListItemIcon>
 											<CameraAltOutlined fontSize="small" />
 										</ListItemIcon>
 										<ListItemText>
 											Куплю
 										</ListItemText>
-									</ListItem>
+									</ListItemButton>
+								</Link>
+								<Link
+									style={{
+										textDecoration: "none",
+										color: "black",
+									}}
+									to="/messages"
+								>
+									<ListItemButton>
+										<ListItemIcon>
+											<MailOutlineOutlined fontSize="small" />
+										</ListItemIcon>
+										<ListItemText>
+											Сообщения
+										</ListItemText>
+									</ListItemButton>
 								</Link>
 								<Link
 									style={{
@@ -265,12 +295,12 @@ export default function MenuAppBar() {
 									}}
 									to="/my-listings"
 								>
-									<ListItem button>
+									<ListItemButton>
 										<ListItemIcon>
 											<ArticleOutlined fontSize="small" />
 										</ListItemIcon>
 										<ListItemText>Мои покупки</ListItemText>
-									</ListItem>
+									</ListItemButton>
 								</Link>
 							</List>
 							<Divider />
@@ -282,14 +312,14 @@ export default function MenuAppBar() {
 									}}
 									to="/account"
 								>
-									<ListItem button>
+									<ListItemButton>
 										<ListItemIcon>
 											<AccountCircleOutlined fontSize="small" />
 										</ListItemIcon>
 										<ListItemText>
 											Аккаунт
 										</ListItemText>
-									</ListItem>
+									</ListItemButton>
 								</Link>
 								<ListItem
 									sx={{ color: "black" }}
@@ -316,12 +346,12 @@ export default function MenuAppBar() {
 									}}
 									to="/login"
 								>
-									<ListItem button>
+									<ListItemButton>
 										<ListItemIcon>
 											<Login />
 										</ListItemIcon>
 										<ListItemText primary="Вход" />
-									</ListItem>
+									</ListItemButton>
 								</Link>
 								<Link
 									style={{
@@ -330,12 +360,12 @@ export default function MenuAppBar() {
 									}}
 									to="/signup"
 								>
-									<ListItem button>
+									<ListItemButton>
 										<ListItemIcon>
 											<PersonAddAlt1Outlined />
 										</ListItemIcon>
 										<ListItemText primary="Регистрация" />
-									</ListItem>
+									</ListItemButton>
 								</Link>
 							</List>
 						</>

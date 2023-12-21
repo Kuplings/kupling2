@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import useWebSocket, { ReadyState } from "react-use-websocket"; 
 
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import PublicRoute from "./components/Routes/PublicRoute";
@@ -25,33 +26,16 @@ import {
 	removeNotificationMessage,
 } from "./store/slices/notificationSlice";
 import { Alert, Snackbar } from "@mui/material";
-import useWebSocket, { ReadyState } from "react-use-websocket";
+
 
 import CreateListing from "./pages/CreateListing";
 import ListingDetail from "./pages/ListingDetail";
 import CategoryListing from "./pages/CategoryListing";
 import MyListings from "./pages/MyListings";
 import EditListing from "./pages/EditListing";
-import MyChats from "./pages/ListingChat"
+import ListingMessages from "./pages/ListingMessages"
 
 function App() {
-	const { readyState } = useWebSocket("ws://127.0.0.1:8000/", {
-    onOpen: () => {
-      console.log("Connected!");
-    },
-    onClose: () => {
-      console.log("Disconnected!");
-    }
-  });
- 
-  const connectionStatus = {
-    [ReadyState.CONNECTING]: "Connecting",
-    [ReadyState.OPEN]: "Open",
-    [ReadyState.CLOSING]: "Closing",
-    [ReadyState.CLOSED]: "Closed",
-    [ReadyState.UNINSTANTIATED]: "Uninstantiated"
-  }[readyState];
-
 	const getNewToken = (refresh) => {
 		const newToken = axios
 			.post("token/refresh/", {
@@ -106,11 +90,41 @@ function App() {
 		// eslint-disable-next-line
 	}, [tokens]);
 
+	const [messageHistory, setMessageHistory] = useState([]);
+	const [welcomeMessage, setWelcomeMessage] = useState("");
+	const { readyState } = useWebSocket("ws://127.0.0.1:8000/", {
+    onOpen: () => {
+      console.log("Connected!");
+    },
+    onClose: () => {
+      console.log("Disconnected!");
+    },
+	onMessage: (e) => {
+		const data = JSON.parse(e.data);
+		switch (data.type) {
+			case "welcome_message":
+				setWelcomeMessage(data.message);
+				break;
+			case 'chat_message_echo':
+				setMessageHistory((prev) => prev.concat(data));
+				break;
+			default:
+				console.error("Unknown message type: " + data.type);
+				break;
+		}
+	}
+  });
+ 
+  const connectionStatus = {
+    [ReadyState.CONNECTING]: "Connecting",
+    [ReadyState.OPEN]: "Open",
+    [ReadyState.CLOSING]: "Closing",
+    [ReadyState.CLOSED]: "Closed",
+    [ReadyState.UNINSTANTIATED]: "Uninstantiated"
+  }[readyState];
+
 	return (
 		<>
-			<div>
-      			<span>The WebSocket is currently {connectionStatus}</span>
-    		</div>
 			<Snackbar
 				open={Boolean(notification.message)}
 				autoHideDuration={6000}
@@ -157,8 +171,10 @@ function App() {
 					<Route path="/my-listings" element={<PrivateRoute />}>
 						<Route path="/my-listings" element={<MyListings />} />
 					</Route>
-					<Route path="/chats" element={<PrivateRoute />}>
-						<Route path="/chats" element={<MyChats />} />
+					<Route path="/messages" element={<PrivateRoute />}>
+						<Route path="/messages" element={<ListingMessages 
+							messageHistory={messageHistory} welcomeMessage={welcomeMessage} connectionStatus={connectionStatus}
+						/>} />
 					</Route>
 					<Route path="/create-listing" element={<PrivateRoute />}>
 						<Route

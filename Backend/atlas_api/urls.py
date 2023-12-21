@@ -10,7 +10,7 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Atlas API",
+        title="Kupling API",
         default_version="v1",
         description="",
         contact=openapi.Contact(email="kotkot@gmail.com"),
@@ -34,7 +34,7 @@ urlpatterns = [
     path('api/authentication/social/', include('djoser.social.urls')),
     # ? Swagger
     path('api/docs/', schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui",),
-    path('api/messanger/', include('chat.urls'))
+    # path('api/messanger/', include('chat.urls'))
 ]
 
 

@@ -9,6 +9,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 BASE_DIR = Path(__file__).resolve().parent.parent
 ENVIRONMENT = config("ENVIRONMENT")
 DEBUG = config("DEBUG", default=False, cast=bool)
+print(DEBUG)
 SECRET_KEY = config("SECRET_KEY")
 ALLOWED_HOSTS = [config("ALLOWED_HOSTS")]#config("ALLOWED_HOSTS", cast=lambda v: [s.strip() for s in v.split(",")])
 print(ALLOWED_HOSTS)
